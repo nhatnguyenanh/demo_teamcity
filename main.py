@@ -3,6 +3,7 @@ import time
 import sys
 
 if __name__ == '__main__':
+    start_time = time.monotonic()
     branch = os.getenv("branch")
     print(f"=========== checkout from {branch} ===========")
     sleep_time = os.getenv("SLEEP_TIME")
@@ -11,3 +12,4 @@ if __name__ == '__main__':
     if not sleep_time.isnumeric():
         sys.exit(0)
     time.sleep(int(sleep_time))
+    print(f"Total execute time {time.monotonic() - start_time}")
