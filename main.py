@@ -1,9 +1,13 @@
 import os
+import time
+import sys
 
 if __name__ == '__main__':
-    check_env = os.getenv("CI_CD")
     branch = os.getenv("branch")
-    if check_env:
-        print(f"hello {check_env} with branch {branch} ")
-    else:
-        print("hello teamcity master")
+    print(f"=========== checkout from {branch} ===========")
+    sleep_time = os.getenv("SLEEP_TIME")
+    if not sleep_time:
+        sys.exit(0)
+    if not sleep_time.isnumeric():
+        sys.exit(0)
+    time.sleep(int(sleep_time))
